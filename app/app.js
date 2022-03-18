@@ -4,6 +4,7 @@ const express = require("express");
 var app = express();
 // Add static files location, adds a middleware for serving static files to your Express app.
 app.use(express.static("static"));  // middleware  
+// Register pug  
 app.set("view engine", "pug"); // // Set up template engine 
 // Set the view directory of the app 
 app.set("views", "./app/views");
