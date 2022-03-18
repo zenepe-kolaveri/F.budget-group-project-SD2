@@ -1,0 +1,11 @@
+extends layout
+block content
+h1 User page for: #{user.user_id}
+p 
+h2 Income of the user 
+table(border=1)
+for income in user.income
+tr
+td #{income.i_id}
+td
+a(href='/single-income/' + income.i_id) #{income.category} #{income.date} #{income.amount}
