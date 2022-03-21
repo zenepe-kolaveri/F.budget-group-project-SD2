@@ -20,8 +20,6 @@ class Expenses {
     }
     async getuserExpenses() {
         if (typeof this.category !== 'string') {
-
-
             var sql = "SELECT * from expenses where expense_id = ?"
             const results = await db.query(sql, [this.expense_id]);
             this.expense_id = results[0].id;
@@ -31,13 +29,6 @@ class Expenses {
             this.description = description;
         }
 
-    //function getArraySum(amount){
-      //  var total=0;
-        //for(var i in a) { 
-          //  total += a[i];
-        //}
-        //return total;
-    //}
     }
 }
 module.exports = {

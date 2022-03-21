@@ -12,15 +12,33 @@ const db = require('./services/db');
 // Get the models
 const { User } = require("./models/user");
 
-// Task 1 Single user expenses 
+// Task Single user income 
+app.get("/income/:user_id", async function (req, res) {
+    var user_id = req.params.user_id;
+    var user = new User(user_id);
+    await user.getuserIncome();
+    console.log(user);
+    res.render('income', { user: user });
+});
+
+// Task Single user expenses 
 app.get("/expenses/:user_id", async function (req, res) {
     var user_id = req.params.user_id;
-    // Create a user class with the user_id passed
     var user = new User(user_id);
     await user.getuserExpenses();
     console.log(user);
     res.render('expenses', { user: user });
 });
+
+
+app.get("/report/:user_id", async function (req, res) {
+    var user_id = req.params.user_id;
+    var user = new User(user_id);
+    await user.getuserReport();
+    console.log(user);
+    res.render('report', { user: user });
+});
+
 
 // Create a route for testing the db
 app.get("/users", function (req, res) {
