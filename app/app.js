@@ -11,15 +11,17 @@ app.set("views", "./app/views");
 const db = require('./services/db');
 // Get the models
 const { User } = require("./models/user");
-// Task 1 Single user report 
-app.get("/user-report/:user_id", async function (req, res) {
+
+// Task 1 Single user expenses 
+app.get("/expenses/:user_id", async function (req, res) {
     var user_id = req.params.user_id;
     // Create a user class with the user_id passed
     var user = new User(user_id);
-    await user.getuserIncome();
+    await user.getuserExpenses();
     console.log(user);
-    res.render('user', { user: user });
+    res.render('expenses', { user: user });
 });
+
 // Create a route for testing the db
 app.get("/users", function (req, res) {
     // Prepare an SQL query that will return all rows from the test_table
@@ -36,6 +38,7 @@ app.get("/users", function (req, res) {
         res.json(results)
     });
 });
+
 // Start server on port 3000
 app.listen(3000, function () {
     console.log(`Server running at http://127.0.0.1:3000/`);

@@ -1,0 +1,15 @@
+table(style='width:50%', border='1')
+    tr 
+        th expense_id 
+        th category 
+        th amount_GBP 
+        th expense_date 
+        th description 
+    each expense in user.expenses 
+        tr
+            td #{expense.expense_id}
+            td #{expense.category}
+            td #{expense.amount_GBP}
+            td #{expense.expense_date}
+            td #{expense.description}
+            
