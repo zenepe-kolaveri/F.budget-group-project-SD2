@@ -33,4 +33,8 @@ class Expenses {
 }
 module.exports = {
     Expenses
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 5711d46628dd407506b7846dff9a1bdd42a86884
