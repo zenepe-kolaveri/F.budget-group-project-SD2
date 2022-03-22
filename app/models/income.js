@@ -1,5 +1,7 @@
 // Get the functions in the db.js file to use
 const db = require('../services/db');
+
+// Create Income Class 
 class Income {
     // Income i_id
     i_id;
@@ -25,6 +27,7 @@ class Income {
             this.i_date = results[0].date;
         }
     }
+
 }
 module.exports = {
     Income

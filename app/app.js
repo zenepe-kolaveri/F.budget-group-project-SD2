@@ -4,22 +4,42 @@ const express = require("express");
 var app = express();
 // Add static files location, adds a middleware for serving static files to your Express app.
 app.use(express.static("static"));  // middleware  
-// Register pug  
+// Load view engine    
 app.set("view engine", "pug"); // // Set up template engine 
 // Set the view directory of the app 
-app.set("views", "./app/views");
+app.set("views", "./app/views")
 // Get the functions in the db.js file to use
 const db = require('./services/db');
 // Get the models
 const { User } = require("./models/user");
-// Task 1 Single user report 
-app.get("/user-report/:user_id", async function (req, res) {
+// Home route 
+app.get('/', function (req, res) {
+    // route code 
+    res.render("index");
+});
+// Task Single user income 
+app.get("/income/:user_id", async function (req, res) {
     var user_id = req.params.user_id;
     // Create a user class with the user_id passed
     var user = new User(user_id);
     await user.getuserIncome();
     console.log(user);
-    res.render('user', { user: user });
+    res.render("user", { user: user });
+});
+// Task Single user expenses 
+app.get("/expenses/:user_id", async function (req, res) {
+    var user_id = req.params.user_id;
+    var user = new User(user_id);
+    await user.getuserExpenses();
+    console.log(user);
+    res.render('expenses', { user: user });
+});
+app.get("/report/:user_id", async function (req, res) {
+    var user_id = req.params.user_id;
+    var user = new User(user_id);
+    await user.getuserReport();
+    console.log(user);
+    res.render('report', { user: user });
 });
 // Create a route for testing the db
 app.get("/users", function (req, res) {

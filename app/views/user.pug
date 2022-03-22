@@ -1,11 +1,15 @@
-extends layout
-block content
-h1 User page for: #{user.user_id}
+h1 User Income of  id: #{user.user_id}
 p 
-h2 Income of the user 
-table(border=1)
-for income in user.income
-tr
-td #{income.i_id}
-td
-a(href='/single-income/' + income.i_id) #{income.category} #{income.date} #{income.amount}
+table(style='width:50%', border='1')
+  tr
+    th Income id
+    th Category
+    th Amount
+    th Date
+  for income in user.income
+    tr
+      td #{income.i_id}
+      td #{income.i_category}
+      td #{income.i_amount_GBP}
+      td #{income.i_date}
+p The total is #{user.income.slice(-1)[0][0]["total"]}
