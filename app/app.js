@@ -3,7 +3,11 @@ const express = require("express");
 // Create a new express application 
 var app = express();
 // Add static files location, adds a middleware for serving static files to your Express app.
-app.use(express.static("static"));  // middleware  
+app.use(express.static("static"));  // middleware
+// Make sure we get the POST parameters
+app.use(express.urlencoded({ extended: true })) 
+// To use bootstrap 
+app.use('/bootstrap', express.static('node_modules/bootstrap/dist')); 
 // Load view engine    
 app.set("view engine", "pug"); // // Set up template engine 
 // Set the view directory of the app 
@@ -12,13 +16,13 @@ app.set("views", "./app/views")
 const db = require('./services/db');
 // Get the models
 const { User } = require("./models/user");
-
 // Task Single user income 
 app.get("/income/:user_id", async function (req, res) {
     var user_id = req.params.user_id;
     var user = new User(user_id);
     await user.getuserIncome();
     console.log(user)
+    res.render('income', { user: user });
 });
 
 // Task Single user expenses 
@@ -29,8 +33,7 @@ app.get("/expenses/:user_id", async function (req, res) {
     console.log(user);
     res.render('expenses', { user: user });
 });
-
-
+// Task Single user report 
 app.get("/report/:user_id", async function (req, res) {
     var user_id = req.params.user_id;
     var user = new User(user_id);
@@ -38,8 +41,14 @@ app.get("/report/:user_id", async function (req, res) {
     console.log(user);
     res.render('report', { user: user });
 });
-
-
+// Users page 
+app.get("/users_page/user_id,", async function (req, res) {
+    var user_id = req.params.user_id;
+    var user = new User(user_id);
+    await user.getuserPage();
+    console.log(user);
+    res.render('user_page', { user: user });
+});
 // Create a route for testing the db
 app.get("/users", function (req, res) {
     // Prepare an SQL query that will return all rows from the test_table

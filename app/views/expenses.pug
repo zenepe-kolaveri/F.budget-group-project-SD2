@@ -1,23 +1,72 @@
-<<<<<<< HEAD
-h1 User Expenses with id: #{user.user_id}
-=======
->>>>>>> 5711d46628dd407506b7846dff9a1bdd42a86884
-table(style='width:50%', border='1')
-    tr 
-        th expense_id 
-        th category 
-        th amount_GBP 
-        th expense_date 
-        th description 
-    each expense in user.expenses 
+doctype html
+head
+  title Expenses
+  style.
+    body {
+      font-family: Verdana;
+      font-size: 15px;
+      background: #4169E1}
+
+    .expense_table {
+      border: 1px solid;
+      border-collapse: collapse;
+      }
+
+    .center {
+      width:70%; 
+      margin-left:15%; 
+      margin-right:15%;
+      }
+
+    .tablle {
+      padding: 15px;
+      background-color: #ffffff;
+    }
+
+    .header {
+      color: #ffffff;
+      text-align: center;
+      font-style: italic;
+      text-transform: uppercase;
+    }
+
+    .thh {
+      height: 70px;
+      background-color: rgb(230, 230, 230);
+      padding: 20px; 
+      text-transform: uppercase;}
+
+    .trr {
+      padding: 20px;
+    }
+
+    .total {
+      text-align: center;
+      color: #ffffff;
+      font-size: 25px;
+    }
+
+    .size {
+      font-size: 25px;
+    }
+
+body 
+  h1.header EXPENSES TABLE
+  table.expense_table.tablle.center
+    p
+      tr
+        th.expense_table.thh expense_id
+        th.expense_table.thh category
+        th.expense_table.thh amount_GBP
+        th.expense_table.thh expense_date
+        th.expense_table.thh description
+      each expense in user.expenses[0]
         tr
-            td #{expense.expense_id}
-            td #{expense.category}
-            td #{expense.amount_GBP}
-            td #{expense.expense_date}
-            td #{expense.description}
-<<<<<<< HEAD
-p The total is #{user.expenses.slice(-1)[0][0]["total"]} 
-=======
-p The total is #{user.expenses.slice(-1)[0][0]["total"]} 
->>>>>>> 5711d46628dd407506b7846dff9a1bdd42a86884
+          td.expense_table.trr #{expense.expense_id}
+          td.expense_table.trr #{expense.category}
+          td.expense_table.trr #{expense.amount_GBP}
+          td.expense_table.trr #{expense.expense_date}
+          td.expense_table.trr #{expense.description}
+
+total_expense
+  p.total The total expenses is = #{user.expenses[1] [0] ['total']}
