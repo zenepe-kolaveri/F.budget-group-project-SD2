@@ -1,21 +1,75 @@
-<!DOCTYPE html>
-<html>
-<body style="background-color:powderblue;">
+doctype html
+head
+  title Report
+  style.
+    body {
+      font-family: Verdana;
+      font-size: 15px;
+      background: #4169E1;}
 
-<h1>REPORT (MONTHLY)</h1>
+    .header {
+      color: #ffffff;
+      text-align: center;
+      font-style: italic;
+      text-transform: uppercase;}
 
-table(style='width:50%', border='1')
-    tr 
-        th EXPENSES                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
-        th INCOME 
-        th SAVINGS
-    each report in user.report 
+        .income_table {
+      border: 1px solid;
+      border-collapse: collapse;
+      }
+
+    .center {
+      width:70%; 
+      margin-left:15%; 
+      margin-right:15%;
+      }
+
+    .tablle {
+      padding: 15px;
+      background-color: #ffffff;
+    }
+
+    .header {
+      color: #ffffff;
+      text-align: center;
+      font-style: italic;
+      text-transform: uppercase;
+    }
+
+    .thh {
+      height: 70px;
+      background-color: rgb(230, 230, 230);
+      padding: 20px; 
+      text-transform: uppercase;}
+
+    .trr {
+      padding: 20px;
+    }
+
+    .total {
+      text-align: center;
+      color: #ffffff;
+      font-size: 25px;
+    }
+
+    .size {
+      font-size: 25px;
+    }
+
+head
+  h1.header REPORT (MONTHLY)
+  table.income_table.tablle.center
+    p
+        tr 
+            th.income_table.thh EXPENSES                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+            th.income_table.thh INCOME 
+            th.income_table.thh SAVINGS
         tr
-            td #{user.report.expense_total[0]["total"]}
-            td #{user.report.income_total[0]["total"]}
-            td #{user.report.income_total[0]["total"] - user.report.expense_total[0]["total"]}
+            td.income_table.trr #{user.report.expense_total[0]["total"]}
+            td.income_table.trr #{user.report.income_total[0]["total"]}
+            td.income_table.trr #{user.report.income_total[0]["total"] - user.report.expense_total[0]["total"]}
+
 p.total The total expenses is = #{user.report.expense_total[0] ['total']}
 p.total The total (GBP) = #{user.report.income_total[0] ['total']}
 
-
-p The savings of the month is #{user.report.income_total [0] ["total"] - user.report.expense_total [0] ["total"]}
+p.total The savings of the month is = #{user.report.income_total [0] ["total"] - user.report.expense_total [0] ["total"]}
