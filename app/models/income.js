@@ -13,21 +13,23 @@ class Income {
     i_date
     constructor(i_id, category, amount, date) {
         this.i_id = i_id;
-        this.i_category = category;
-        this.i_amount_GBP = amount;
-        this.i_date = date;
+        this.i_category = i_category;
+        this.i_amount_GBP = i_amount_GBP;
+        this.i_date = i_date;
     }
     async getuserIncome() {
-        if (typeof this.category !== 'string') {
-            var sql = "SELECT * from income where i_id = ?"
-            const results = await db.query(sql, [this.id]);
-            this.i_id = results[0].i_id;
-            this.i_category = results[0].category;
-            this.i_amount = results[0].amount;
-            this.i_date = results[0].date;
+        var sql = "SELECT * from income where user_id = ?"
+        const results = await db.query(sql, [this.user_id]);
+        var sql_t = "SELECT SUM(i_amount_GBP) AS total from income WHERE user_id =?;"
+        const total = await db.query(sql_t, [this.user_id]);
+        var inc=[]
+        for (var row of results) {
+            inc.push({i_id: row.i_id, i_category:row.i_category, i_amount_GBP:row.i_amount_GBP, i_date:row.i_date});
         }
+        this.income.push(inc)
+        this.income.push(total)
+        console.log(this.income)
     }
-
 }
 module.exports = {
     Income

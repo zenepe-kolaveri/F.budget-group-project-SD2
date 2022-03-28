@@ -51,7 +51,7 @@ head
     }
 
 body 
-  h1.header EXPENSES TABLE
+  h1.header Expenses of  user ID: #{user.user_id}
   table.expense_table.tablle.center
     p
       tr
@@ -69,4 +69,4 @@ body
           td.expense_table.trr #{expense.description}
 
 total_expense
-  p.total The total expenses is = #{user.expenses[1] [0] ['total']}
+  p.total The total (GBP) = #{user.expenses[1][0]['total']}

@@ -17,9 +17,11 @@ class User {
         const results = await db.query(sql, [this.user_id]);
         var sql_t = "SELECT SUM(i_amount_GBP) AS total from income WHERE user_id =?;"
         const total = await db.query(sql_t, [this.user_id]);
+        var inc=[]
         for (var row of results) {
-            this.income.push(new Income(row.i_id, row.i_category, row.i_amount_GBP, row.i_date));
+            inc.push({i_id: row.i_id, i_category:row.i_category, i_amount_GBP:row.i_amount_GBP, i_date:row.i_date});
         }
+        this.income.push(inc)
         this.income.push(total)
         console.log(this.income)
     }
@@ -42,10 +44,10 @@ class User {
         const e_total = await db.query(sql_t, [this.user_id]);
         var sql_t = "SELECT SUM(i_amount_GBP) AS total from income WHERE user_id = ?;"
         const i_total = await db.query(sql_t, [this.user_id]);
-        let a = { e_total, i_total }
         this.report["expense_total"] = e_total
         this.report["income_total"] = i_total
-        this.report.push(a)
+
+        // this.report.push(a)
         console.log(this.report)
     }
 }

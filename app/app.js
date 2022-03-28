@@ -24,7 +24,6 @@ app.get("/income/:user_id", async function (req, res) {
     console.log(user)
     res.render('income', { user: user });
 });
-
 // Task Single user expenses 
 app.get("/expenses/:user_id", async function (req, res) {
     var user_id = req.params.user_id;
@@ -41,13 +40,10 @@ app.get("/report/:user_id", async function (req, res) {
     console.log(user);
     res.render('report', { user: user });
 });
-// Users page 
-app.get("/users_page/user_id,", async function (req, res) {
-    var user_id = req.params.user_id;
-    var user = new User(user_id);
-    await user.getuserPage();
-    console.log(user);
-    res.render('user_page', { user: user });
+// Task All_Users page 
+app.get("/allusers", async function (req, res) {
+    let allusers = [1,2,3,4]
+    res.render('user_page', { allusers: allusers });
 });
 // Create a route for testing the db
 app.get("/users", function (req, res) {
@@ -65,7 +61,6 @@ app.get("/users", function (req, res) {
         res.json(results)
     });
 });
-
 // Start server on port 3000
 app.listen(3000, function () {
     console.log(`Server running at http://127.0.0.1:3000/`);
