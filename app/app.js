@@ -5,13 +5,13 @@ var app = express();
 // Add static files location, adds a middleware for serving static files to your Express app.
 app.use(express.static("static"));  // middleware
 // Make sure we get the POST parameters
-app.use(express.urlencoded({ extended: true })) 
+app.use(express.urlencoded({ extended: true })); 
 // To use bootstrap 
 app.use('/bootstrap', express.static('node_modules/bootstrap/dist')); 
 // Load view engine    
 app.set("view engine", "pug"); // // Set up template engine 
 // Set the view directory of the app 
-app.set("views", "./app/views")
+app.set("views", "./app/views");
 // Get the functions in the db.js file to use
 const db = require('./services/db');
 // Get the models
@@ -21,7 +21,7 @@ app.get("/income/:user_id", async function (req, res) {
     var user_id = req.params.user_id;
     var user = new User(user_id);
     await user.getuserIncome();
-    console.log(user)
+    console.log(user);
     res.render('income', { user: user });
 });
 // Task Single user expenses 
@@ -42,9 +42,10 @@ app.get("/report/:user_id", async function (req, res) {
 });
 // Task All_Users page 
 app.get("/allusers", async function (req, res) {
-    let allusers = [1,2,3,4]
+    let allusers = [1,2,3,4];
     res.render('user_page', { allusers: allusers });
 });
+
 // Create a route for testing the db
 app.get("/users", function (req, res) {
     // Prepare an SQL query that will return all rows from the test_table
@@ -58,7 +59,8 @@ app.get("/users", function (req, res) {
         // Take a peek in the console
         console.log(results);
         // Send to the web pate
-        res.json(results)
+        res.json(results);
+        
     });
 });
 // Start server on port 3000
