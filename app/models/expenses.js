@@ -5,7 +5,7 @@ class Expenses {
     expense_id;
     // expense category
     category;
-    // expense Amount 
+    // expense Amount
     amount_GBP
     // expense date 
     expense_date

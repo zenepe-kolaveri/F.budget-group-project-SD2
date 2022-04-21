@@ -1,0 +1,82 @@
+doctype html
+html 
+  head
+    title(Side)
+    link(rel='stylesheet' type='text/css' href='/static/css/style.css')
+
+body 
+div(class="wrapper")
+    div(class="sidebar")
+        h2 family budget
+        ul
+            li
+                a(href="#") Overview
+            li
+                a(href="#") Budget
+            li
+                a(href="#") Family Members
+            li
+                a(href="http://127.0.0.1:3000/report/?") Report
+
+    div(class="main_content")
+        div(class="header") Hi User #{user.user_id}
+
+        div(class="row1")
+            //expenses
+            div(class="expenses")
+                h2(class="expense-header") Expenses 
+                    form(action='/add-expenses' method='POST' class = "expense-form")
+                        input(type='hidden' name='id' value=user.user_id)
+                        input(type="text" name='description' placeholder= "describe your expenses" class = "expense-input")
+                        input(type="text" name='amount_GBP' placeholder= "amount in numbers e.g 1000" class = "expense-input")
+                        input(type="text" name='expense_date' placeholder= "date in YYYY-MM-DD" class = "expense-input")
+
+                        label(for="expenses") Choose a category:
+                            select(name="category")
+                                option(value="Shopping") Shopping
+                                option(value="Drink") Drink
+                                option(value="Transportation") Transportation
+                                option(value="Charity") Charity
+                                option(value="Utilities") Utilities
+                                option(value="Insurance") Insurance
+                                option(value="Entertainment") Entertainment
+                                option(value="Communication") Communication 	
+                    
+                        input(type='submit' class="income-button" value='Add Expenses')
+
+
+            //income
+    
+            div(class="income")
+                h2(class="income-header") Income
+                    form(action='/add-income' method='POST' class = "income-form")
+                        input(type='hidden' name='id' value=user.user_id)
+                        input(type="text" name='description' placeholder= "describe your income" class = "income-input")
+                        input(type="text" name='i_amount_GBP' placeholder= "amount in numbers e.g 1000" class = "income-input")
+                        input(type="text" name='i_date' placeholder= "date in YYYY-MM-DD" class = "income-input")
+
+                        label(for="income") Choose a category:
+                            select(name="category")
+                                option(value="Salary") Salary
+                                option(value="Gift") Gift
+                                option(value="Other") Other
+                                option(value="Profit") Profit
+                                option(value="Savings") Savings
+                                
+                        input(type='submit' class="button-income" value='Add Income')
+
+        //report
+        div(class="row1")
+            div(class='report')
+                h2(class="report-header") Report
+                //Expenses total
+                p(class="reportwriteup") The total expenses is = #{user.report.expense_total[0] ['total']}
+                p(class="reportwriteup") The total income (GBP) = #{user.report.income_total[0] ['total']}
+
+
+            //savings
+            div(class='savings')
+                h2(class="savings-header") Savings 
+                div(class='savings2')
+                    p(class="writeup") The savings of the month is = #{user.report.income_total [0] ["total"] - user.report.expense_total [0] ["total"]}
+
