@@ -2,6 +2,7 @@
 const db = require('../services/db');
 const { Expenses } = require('./expenses');
 const { Income } = require("./income");
+// Create Class of USer 
 class User {
     // User id 
     user_id;
@@ -26,12 +27,10 @@ class User {
         this.income.push(total)
         console.log(this.income)
     }
-
-
     async getuserExpenses() {
-        var sql = "SELECT * from expenses where user_id = ?"
+        var sql = "SELECT * from expenses where user_id = ?";
         const results = await db.query(sql, [this.user_id]);
-        var sql_t = "SELECT SUM(amount_GBP) AS total from expenses WHERE user_id = ?;"
+        var sql_t = "SELECT SUM(amount_GBP) AS total from expenses WHERE user_id =?";
         const total = await db.query(sql_t, [this.user_id]);
         var ex=[]
         for (var row of results) {
@@ -41,20 +40,18 @@ class User {
         this.expenses.push(total)
         console.log(this.expenses)
     }
-
     async getuserReport() {
 
-        var sql_t = "SELECT SUM(amount_GBP) AS total from expenses WHERE user_id = ?;"
+        var sql_t = "SELECT SUM(amount_GBP) AS total from expenses WHERE user_id = ?";
         const e_total = await db.query(sql_t, [this.user_id]);
-
-        var sql_t = "SELECT SUM(i_amount_GBP) AS total from income WHERE user_id = ?;"
+        var sql_t = "SELECT SUM(i_amount_GBP) AS total from income WHERE user_id = ?";
         const i_total = await db.query(sql_t, [this.user_id]);
 
         this.report["expense_total"] = e_total
         this.report["income_total"] = i_total
 
         // this.report.push(a)
-        console.log(this.report)
+        console.log(this.report);
     }
 
     

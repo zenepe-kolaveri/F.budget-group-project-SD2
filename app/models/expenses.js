@@ -5,10 +5,15 @@ class Expenses {
     expense_id;
     // expense category
     category;
+<<<<<<< HEAD
     // expense Amount
     amount_GBP
+=======
+    // expense Amount 
+    amount_GBP;
+>>>>>>> 39be6a14d5a1afe10716050563fad6a772ad3fdc
     // expense date 
-    expense_date
+    expense_date;
     // description
     description;
     constructor(expense_id, category, amount_GBP, expense_date, description) {
@@ -20,7 +25,7 @@ class Expenses {
     }
     async getuserExpenses() {
         if (typeof this.category !== 'string') {
-            var sql = "SELECT * from expenses where expense_id = ?"
+            var sql = "SELECT * from expenses where expense_id = ?";
             const results = await db.query(sql, [this.expense_id]);
             this.expense_id = results[0].id;
             this.category = results[0].category;

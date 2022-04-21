@@ -1,5 +1,6 @@
 doctype html
 head
+<<<<<<< HEAD
     title Expenses
     style.
         body {
@@ -72,3 +73,75 @@ total_expense
     p.total The total expenses is = #{user.expenses[1] [0] ['total']}
 
 
+=======
+  title Expenses
+  style.
+    body {
+      font-family: Verdana;
+      font-size: 15px;
+      background: #4169E1}
+
+    .expense_table {
+      border: 1px solid;
+      border-collapse: collapse;
+      }
+
+    .center {
+      width:70%; 
+      margin-left:15%; 
+      margin-right:15%;
+      }
+
+    .tablle {
+      padding: 15px;
+      background-color: #ffffff;
+    }
+
+    .header {
+      color: #ffffff;
+      text-align: center;
+      font-style: italic;
+      text-transform: uppercase;
+    }
+
+    .thh {
+      height: 70px;
+      background-color: rgb(230, 230, 230);
+      padding: 20px; 
+      text-transform: uppercase;}
+
+    .trr {
+      padding: 20px;
+    }
+
+    .total {
+      text-align: center;
+      color: #ffffff;
+      font-size: 25px;
+    }
+
+    .size {
+      font-size: 25px;
+    }
+
+body 
+  h1.header Expenses of  user ID: #{user.user_id}
+  table.expense_table.tablle.center
+    p
+      tr
+        th.expense_table.thh expense_id
+        th.expense_table.thh category
+        th.expense_table.thh amount_GBP
+        th.expense_table.thh expense_date
+        th.expense_table.thh description
+      each expense in user.expenses[0]
+        tr
+          td.expense_table.trr #{expense.expense_id}
+          td.expense_table.trr #{expense.category}
+          td.expense_table.trr #{expense.amount_GBP}
+          td.expense_table.trr #{expense.expense_date}
+          td.expense_table.trr #{expense.description}
+
+total_expense
+  p.total The total (GBP) = #{user.expenses[1][0]['total']}
+>>>>>>> 39be6a14d5a1afe10716050563fad6a772ad3fdc
