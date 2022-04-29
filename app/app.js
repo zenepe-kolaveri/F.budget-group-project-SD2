@@ -15,7 +15,10 @@ app.set("views", "./app/views");
 // Get the functions in the db.js file to use
 const db = require('./services/db');
 // Get the models
-const { User } = require("./models/user");
+const {User} = require("./models/user");
+
+app.use(express.urlencoded({ extended: true }));
+
 // Task Single user income 
 app.get("/income/:user_id", async function (req, res) {
     var user_id = req.params.user_id;
