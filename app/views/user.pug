@@ -1,0 +1,14 @@
+extends layout
+block content
+  h1 Add income about this user 
+  form(action='/add-income', method='POST')
+    input(type='hidden' name='id' value=user.id)
+    textarea(name='income' rows=6 cols=50)
+    <div>
+    input(type='submit' value='Submit')
+  form(action='/allocate-category', method='POST')
+    input(type='hidden' name='id' value=user.id)
+    select(name='category')
+      for category in categories
+        option(value=category.id) #{category.name}
+    

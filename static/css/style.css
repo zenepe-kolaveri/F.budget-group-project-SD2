@@ -1,0 +1,202 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: Verdana;
+  
+  }
+  
+  body{
+     background-color: #ffffff;
+  }
+  
+  .wrapper{
+    display: flex;
+    position: relative;
+  }
+  
+  .wrapper .sidebar{
+    width: 200px;
+    height: 100%;
+    background: #e2e2e2;
+    padding: 30px 0px;
+    position: fixed;
+  }
+  
+  .wrapper .sidebar h2{
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+    font-size: 15px;
+    padding: 15px;
+    margin-bottom: 30px;
+  }
+  
+  .wrapper .sidebar ul li{
+    text-transform: uppercase;
+    padding: 15px;
+    border-bottom: 1px solid #322670;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    font-size: 10px;
+  }    
+  
+  .wrapper .sidebar ul li a{
+    color: #000000;
+    display: block;
+  }
+  
+  .wrapper .sidebar ul li:hover{
+    background-color: #fd631c;
+    color: #ffffff;
+  }
+      
+  .wrapper .sidebar ul li:hover a{
+    color: rgb(255, 255, 255);
+  }
+  
+  .wrapper .main_content{
+    width: 100%;
+    margin-left: 200px;
+    color: #ffffff;
+  }
+  
+  .row1{
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .wrapper .main_content .row1 .expenses .expense-form .button{
+    padding: 10px;
+    margin-top: 10px;
+  }
+  
+  .wrapper .main_content .row1 .income .income-form .income-button{
+    padding: 10px;
+    margin-top: 10px;
+  }
+  
+  .wrapper .main_content .row1 .expenses .expense-form{
+    font-size: 15px;
+    margin: 20px;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+  
+  .wrapper .main_content .row1 .income .income-form{
+    font-size: 15px;
+    margin: 20px;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+  
+  .wrapper .main_content .header{
+    padding: 20px;
+    background: #fff;
+    color: #717171;
+    border-bottom: 1px solid #e0e4e8;
+    text-align: right;
+    font-size: 20px;
+  }
+  
+  
+  .wrapper .main_content .row1 .expenses{
+    width: 300px;
+    font: 10px; 
+    text-align:center;
+    font-size:10px;
+    margin: 20px;
+    padding: 10px;
+    background-color: #fd631c;
+    box-shadow: 0px 5px 5px 0px #0000003b;
+  
+  }
+  
+  .wrapper .main_content .row1 .income{
+    width: 300px;
+    font: 10px; 
+    text-align:center;
+    font-size:10px;
+    margin: 20px;
+    padding: 10px;
+    background-color: #fd631c;
+    box-shadow: 0px 5px 5px 0px #0000003b;
+  
+  }
+  
+  .wrapper .main_content .row1 .expenses .report{
+    padding: 10px;
+    text-align:center;
+    font-size:12px;
+  
+  }
+  
+  .wrapper .main_content .row1 .expenses .expense-form .expense-input{
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .wrapper .main_content .row1 .income .income-form .income-input{
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .wrapper .main_content .row1 .savings{
+    width: 300px;
+    font: 10px; 
+    text-align:center;
+    font-size:10px;
+    margin: 20px;
+    padding: 10px;
+    background-color: #fd631c;
+    box-shadow: 0px 5px 5px 0px #0000003b;
+  }
+  
+  .wrapper .main_content .row1 .report{
+    width: 300px;
+    font: 10px; 
+    text-align:center;
+    font-size:10px;
+    margin: 20px;
+    padding: 10px;
+    background-color: #fd631c;
+    box-shadow: 0px 5px 5px 0px #0000003b;
+  }
+  
+  .wrapper .main_content .row1 .report .savings2{
+    height: 100%;
+    width: 100%;
+    background-color: #322670;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .wrapper .main_content .row1 .savings .writeup{
+    background-color: #ffffff;
+    font-size: 20px;
+    width: 100%;
+    color: #000000;
+    box-sizing: border-box;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .wrapper .main_content .row1 .report .reportwriteup{
+    background-color: #ffffff;
+    font-size: 20px;
+    width: 100%;
+    color: #000000;
+    box-sizing: border-box;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }

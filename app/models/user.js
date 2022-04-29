@@ -17,9 +17,9 @@ class User {
         const results = await db.query(sql, [this.user_id]);
         var sql_t = "SELECT SUM(i_amount_GBP) AS total from income WHERE user_id =?";
         const total = await db.query(sql_t, [this.user_id]);
-        var inc=[];
+        var inc = [];
         for (var row of results) {
-            inc.push({i_id: row.i_id, i_category:row.i_category, i_amount_GBP:row.i_amount_GBP, i_date:row.i_date});
+            inc.push({ i_id: row.i_id, i_category: row.i_category, i_amount_GBP: row.i_amount_GBP, i_date: row.i_date });
         }
         this.income.push(inc);
         this.income.push(total);
@@ -30,9 +30,9 @@ class User {
         const results = await db.query(sql, [this.user_id]);
         var sql_t = "SELECT SUM(amount_GBP) AS total from expenses WHERE user_id =?";
         const total = await db.query(sql_t, [this.user_id]);
-        var ex=[];
+        var ex = [];
         for (var row of results) {
-            ex.push({expense_id: row.expense_id, category:row.category, amount_GBP:row.amount_GBP, expense_date:row.expense_date, description:row.description});
+            ex.push({ expense_id: row.expense_id, category: row.category, amount_GBP: row.amount_GBP, expense_date: row.expense_date, description: row.description });
         }
         this.expenses.push(ex);
         this.expenses.push(total);
@@ -50,6 +50,39 @@ class User {
         // this.report.push(a)
         console.log(this.report);
     }
+    async addExpenses(description, category, amount_GBP, expense_date, user_id) {
+        var sql = "INSERT INTO expenses (description, category, amount_GBP, expense_date, user_id) VALUES (?, ?, ?, ?, ?)";
+       
+
+    /*    let insertQuery = 'INSERT INTO ?? (??,??) VALUES (?,?)';
+    let query = mysql.format(insertQuery,["todo","user","notes",data.user,data.value]);*/
+        console.log("who am i?")
+        console.log(description)
+        console.log(category)
+        console.log(amount_GBP)
+        console.log(expense_date)
+        console.log(user_id)
+
+        const result = await db.query(sql, [description, category, amount_GBP, expense_date, user_id]);
+        return result;
+    }
+    async addIncome(i_category,i_amount_GBP,i_date,user_id) {
+        var sql = "INSERT INTO income (i_category, i_amount_GBP, i_date, user_id) VALUES (?, ?, ?, ?, ?)";
+       
+
+    /*    let insertQuery = 'INSERT INTO ?? (??,??) VALUES (?,?)';
+    let query = mysql.format(insertQuery,["todo","user","notes",data.user,data.value]);*/
+        console.log("who am i?")
+        console.log(i_category)
+        console.log(i_amount_GBP)
+        console.log(i_date)
+        console.log(user_id)
+
+        const result = await db.query(sql, [i_category, i_amount_GBP, i_date, user_id]);
+        return result;
+    }
+
+
 }
 module.exports = {
     User
