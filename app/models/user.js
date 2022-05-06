@@ -2,18 +2,20 @@
 const db = require('../services/db');
 const { Expenses } = require('./expenses');
 const { Income } = require("./income");
+const bcrypt = require("bcryptjs");
+
 // Create Class of USer 
 class User {
     // User id 
     user_id;
+    // Email of the user
+    email;
     income = [];
     expenses = []
     report = {}
-
     constructor(user_id) {
         this.user_id = user_id;
-    } 
-
+    }
     async getuserIncome() {
         var sql = "SELECT * from income where user_id = ?"
         const results = await db.query(sql, [this.user_id]);
@@ -23,7 +25,7 @@ class User {
         for (var row of results) {
             inc.push({ i_id: row.i_id, i_category: row.i_category, i_amount_GBP: row.i_amount_GBP, i_date: row.i_date });
         }
-        this.income.push(ex)
+        this.income.push(inc)
         this.income.push(total)
         console.log(this.income)
     }
@@ -55,10 +57,10 @@ class User {
     }
     async addExpenses(description, category, amount_GBP, expense_date, user_id) {
         var sql = "INSERT INTO expenses (description, category, amount_GBP, expense_date, user_id) VALUES (?, ?, ?, ?, ?)";
-       
 
-    /*    let insertQuery = 'INSERT INTO ?? (??,??) VALUES (?,?)';
-    let query = mysql.format(insertQuery,["todo","user","notes",data.user,data.value]);*/
+
+        /*    let insertQuery = 'INSERT INTO ?? (??,??) VALUES (?,?)';
+        let query = mysql.format(insertQuery,["todo","user","notes",data.user,data.value]);*/
         console.log("who am i?")
         console.log(description)
         console.log(category)
@@ -69,12 +71,12 @@ class User {
         const result = await db.query(sql, [description, category, amount_GBP, expense_date, user_id]);
         return result;
     }
-    async addIncome(i_category,i_amount_GBP,i_date,user_id) {
+    async addIncome(i_category, i_amount_GBP, i_date, user_id) {
         var sql = "INSERT INTO income (i_category, i_amount_GBP, i_date, user_id) VALUES (?, ?, ?, ?, ?)";
-       
 
-    /*    let insertQuery = 'INSERT INTO ?? (??,??) VALUES (?,?)';
-    let query = mysql.format(insertQuery,["todo","user","notes",data.user,data.value]);*/
+
+        /*    let insertQuery = 'INSERT INTO ?? (??,??) VALUES (?,?)';
+        let query = mysql.format(insertQuery,["todo","user","notes",data.user,data.value]);*/
         console.log("who am i?")
         console.log(i_category)
         console.log(i_amount_GBP)
@@ -84,9 +86,33 @@ class User {
         const result = await db.query(sql, [i_category, i_amount_GBP, i_date, user_id]);
         return result;
     }
-
-
+    async deleteUserCategory(category) {
+        var sql = "DELETE FROM income WHERE user_id = ?";
+        varsql2 = "DELETE FROM expenses WHERE user_id = ?";
+        const result = await db.query(sql, [this.user_id]);
+        // Ensure the note property in the model is up to date
+        this.category = '';
+        return result;
+    } javascript
+    async addUserCategory(category) {
+        var sql = "INSERT INTO income (user_id, i_category) VALUES (?, ?)";
+        var sql2 = "INSERT INTO expenses (user_id, category) VALUES (?, ?)";
+        const result = await db.query(sql, [this.id, category]);
+        // Ensure the note property in the model is up to date
+        this.category = category;
+        return result;
+    }
+    async updateUserCategory(category) {
+        const existing = await this.getuserIncome();
+        const existing2 = await this.getuserExpenses();
+        if (this.category) {
+            await this.deleteUserCategory(category);
+        }
+        await this.addUserCategory(category);
+    }
 }
+
+
 module.exports = {
     User
 }

@@ -72,59 +72,5 @@ head
 p.total The total expenses is = #{user.report.expense_total[0] ['total']}
 p.total The total (GBP) = #{user.report.income_total[0] ['total']}
 
-<<<<<<< HEAD
 p.total The savings of the month is = #{user.report.income_total [0] ["total"] - user.report.expense_total [0] ["total"]}
-      
 
-
-//- table(style='width:50%', border='1')
-//-     tr 
-//-         th EXPENSES                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
-//-         th INCOME 
-//-         th SAVINGS
-//-     each report in user.report 
-//-         tr
-//-             td #{user.report.expense_total[0]["total"]}
-//-             td #{user.report.income_total[0]["total"]}
-//-             td #{user.report.income_total[0]["total"] - user.report.expense_total[0]["total"]}
-//- p.total The total expenses is = #{user.report.expense_total[0] ['total']}
-//- p.total The total (GBP) = #{user.report.income_total[0] ['total']}
-
-
-//- p The savings of the month is #{user.report.income_total [0] ["total"] - user.report.expense_total [0] ["total"]}
-//- //- <!DOCTYPE html>
-//- //- <html>
-//- //- <body style="background-color:powderblue;">
-
-//- //- <h1>REPORT (MONTHLY)</h1>
-
-//- //- table(style='width:50%', border='1')
-//- //-     tr 
-//- //-         th EXPENSES                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
-//- //-         th INCOME 
-//- //-         th SAVINGS
-//- //-     each report in user.report 
-//- //-         tr
-//- //-             td #{user.report.expense_total[0]["total"]}
-//- //-             td #{user.report.income_total[0]["total"]}
-//- //-             td #{user.report.income_total[0]["total"] - user.report.expense_total[0]["total"]}
-
-//- //- p.total The total expenses is = #{user.report.expense_total[0] ['total']}
-//- //- p.total The total (GBP) = #{user.report.income_total[0] ['total']}
-
-
-//- //- p The savings of the month is #{user.report.income_total [0] ["total"] - user.report.expense_total [0] ["total"]}
-
-//- //- //- p The total expenses is #{user.report.expense_total[0]["total"]}
-//- //- //- p The total income is #{user.report.income_total[0]["total"]}
-
-//- //- //- p(The savings of the month is #{user.report.income_total[0]["total"] - user.report.expense_total[0]["total"]})
-
-//- //- //- total_expense
-//- //- //-     p.total The total expenses is = #{user.expenses[1] [0] ['total']}
-=======
-- var savings = user.report.income_total [0] ["total"] - user.report.expense_total [0] ["total"];
-- savings = savings.toFixed(2);
-
-p.total The savings of the month is = #{savings}
->>>>>>> 39be6a14d5a1afe10716050563fad6a772ad3fdc

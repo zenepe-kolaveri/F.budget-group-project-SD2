@@ -17,5 +17,7 @@ form(action='/set-date', method='POST')
   input(type='submit' value='Submit')
 ul
 - // Now we loop through the dates and display them
-for date in dates
-  li #{date}
+for i_date in income
+  li #{i_date}
+for expense_date in expenses
+  li #{expense_date}

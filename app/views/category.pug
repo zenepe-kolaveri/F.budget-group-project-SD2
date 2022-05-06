@@ -1,0 +1,33 @@
+h2 Add a category about this user
+form(action='/add-note', method='POST')
+  input(type='hidden' name='id' value=student.id)
+  textarea(name='note' rows=6 cols=50)
+  div
+  input(type='submit' value='Submit')
+form(action='/allocate-category', method='POST')
+  input(type='hidden' name='id' value=user.id)
+  select(name='category')
+    for category in income
+      option(value=income.id) #{income.i_category}
+    for category in expenses
+      option(value=category.id) #{expenses.category}
+
+  <div>
+  input(type='submit' value='Submit')
+form(action='/allocate-category', method='POST')
+  input(type='hidden' name='id' value=user.id)
+  select(name='category')
+    for category in income
+      if category.id == user.category.id
+        option(value=category.id selected='selected') #{income.i_category}
+      else
+        option(value=category.id) #{income.i_category}
+  select(name='category')
+  for category in expenses
+      if category.id == user.category.id
+        option(value=category.id selected='selected') #{expenses.category}
+      else
+        option(value=category.id) #{expenses.category}
+
+<div>
+input(type='submit' value='Submit')

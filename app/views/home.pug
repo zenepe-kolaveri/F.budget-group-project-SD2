@@ -7,7 +7,7 @@ html
 body 
 div(class="wrapper")
     div(class="sidebar")
-        h2 family budget
+        h2 Family Budget
         ul
             li
                 a(href="#") Overview
@@ -27,14 +27,14 @@ div(class="wrapper")
                 h2(class="expense-header") Expenses 
                     form(action='/add-expenses' method='POST' class = "expense-form")
                         input(type='hidden' name='id' value=user.user_id)
-                        input(type="text" name='description' placeholder= "describe your expenses" class = "expense-input")
-                        input(type="text" name='amount_GBP' placeholder= "amount in numbers e.g 1000" class = "expense-input")
-                        input(type="text" name='expense_date' placeholder= "date in YYYY-MM-DD" class = "expense-input")
+                        input(type="text" name='description' placeholder= "Expenses description" class = "expense-input")
+                        input(type="number" name='amount_GBP' placeholder= "amount in numbers e.g 1000" class = "expense-input")
+                        input(type="date" name='expense_date' placeholder= "date in YYYY-MM-DD" class = "expense-input")
 
                         label(for="expenses") Choose a category:
                             select(name="category")
                                 option(value="Shopping") Shopping
-                                option(value="Drink") Drink
+                                option(value="Food and Drink") Food and Drink
                                 option(value="Transportation") Transportation
                                 option(value="Charity") Charity
                                 option(value="Utilities") Utilities
@@ -51,9 +51,9 @@ div(class="wrapper")
                 h2(class="income-header") Income
                     form(action='/add-income' method='POST' class = "income-form")
                         input(type='hidden' name='id' value=user.user_id)
-                        input(type="text" name='description' placeholder= "describe your income" class = "income-input")
-                        input(type="text" name='i_amount_GBP' placeholder= "amount in numbers e.g 1000" class = "income-input")
-                        input(type="text" name='i_date' placeholder= "date in YYYY-MM-DD" class = "income-input")
+                        input(type="text" name='description' placeholder= "Income description" class = "income-input")
+                        input(type="number" name='i_amount_GBP' placeholder= "amount in numbers e.g 1000" class = "income-input")
+                        input(type="date" name='i_date' placeholder= "date in YYYY-MM-DD" class = "income-input")
 
                         label(for="income") Choose a category:
                             select(name="category")
